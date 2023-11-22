@@ -10,7 +10,7 @@ import (
 
 func main() {
 	sess, err := session.NewSession(&aws.Config{
-		Region: aws.String("us-west-2"), // 替换为您的AWS区域
+		Region: aws.String("ap-east-1"), // 替换为您的AWS区域
 	})
 	if err != nil {
 		fmt.Println("创建会话失败:", err)
@@ -20,7 +20,7 @@ func main() {
 	svc := ec2.New(sess)
 
 	runResult, err := svc.RunInstances(&ec2.RunInstancesInput{
-		ImageId:      aws.String("ami-01da42fa32830f2d0"),
+		ImageId:      aws.String("ami-0a23face2dcb47fa6"),
 		InstanceType: aws.String("t3.small"),
 		KeyName:      aws.String("ec2-user"),
 		MinCount:     aws.Int64(1),
@@ -44,7 +44,7 @@ func main() {
 				Tags: []*ec2.Tag{
 					{
 						Key:   aws.String("Name"),
-						Value: aws.String("MySingleInstance"), // 指定实例名称
+						Value: aws.String("MyFirstInstanceTEST"), // 指定实例名称
 					},
 				},
 			},
