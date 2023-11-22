@@ -28,7 +28,7 @@ func main() {
 		SecurityGroupIds: []*string{
 			aws.String("sg-033a6552e3ffe1a48"),
 		},
-		SubnetId: aws.String("vpc-0cadb665c480c21d1"), // 替换为您的子网ID
+		SubnetId: aws.String("subnet-0a7e140afbc1f8f9b"), // 替换为您的子网ID
 		BlockDeviceMappings: []*ec2.BlockDeviceMapping{
 			{
 				DeviceName: aws.String("/dev/sdh"),
