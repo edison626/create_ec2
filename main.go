@@ -20,7 +20,7 @@ func main() {
 	svc := ec2.New(sess)
 
 	runResult, err := svc.RunInstances(&ec2.RunInstancesInput{
-		ImageId:      aws.String("ami-0a23face2dcb47fa6"),
+		ImageId:      aws.String("ami-01da42fa32830f2d0"),
 		InstanceType: aws.String("t3.small"),
 		KeyName:      aws.String("ec2-user"),
 		MinCount:     aws.Int64(1),
