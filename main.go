@@ -57,4 +57,31 @@ func main() {
 	}
 
 	fmt.Println("已成功创建实例:", runResult.Instances)
+
+	if len(runResult.Instances) > 0 {
+		instanceId := runResult.Instances[0].InstanceId
+
+		// 申请弹性IP
+		allocRes, err := svc.AllocateAddress(&ec2.AllocateAddressInput{
+			Domain: aws.String("vpc-0cadb665c480c21d1"), // VPC网络
+		})
+		if err != nil {
+			fmt.Println("无法分配弹性IP:", err)
+			return
+		}
+
+		// 关联弹性IP到实例
+		_, err = svc.AssociateAddress(&ec2.AssociateAddressInput{
+			InstanceId:   instanceId,
+			AllocationId: allocRes.AllocationId,
+		})
+		if err != nil {
+			fmt.Println("无法关联弹性IP:", err)
+			return
+		}
+
+		fmt.Println("弹性IP已成功关联到实例:", *instanceId)
+	} else {
+		fmt.Println("未成功创建任何实例")
+	}
 }
