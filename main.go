@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -58,30 +59,47 @@ func main() {
 
 	fmt.Println("已成功创建实例:", runResult.Instances)
 
-	if len(runResult.Instances) > 0 {
-		instanceId := runResult.Instances[0].InstanceId
+	instanceId := runResult.Instances[0].InstanceId
 
-		// 申请弹性IP
-		allocRes, err := svc.AllocateAddress(&ec2.AllocateAddressInput{
-			Domain: aws.String("vpc-0cadb665c480c21d1"), // VPC网络
+	// 等待实例变为running状态
+	fmt.Println("等待实例启动...")
+	for {
+		descInstances, err := svc.DescribeInstances(&ec2.DescribeInstancesInput{
+			InstanceIds: []*string{instanceId},
 		})
 		if err != nil {
-			fmt.Println("无法分配弹性IP:", err)
+			fmt.Println("无法获取实例状态:", err)
 			return
 		}
 
-		// 关联弹性IP到实例
-		_, err = svc.AssociateAddress(&ec2.AssociateAddressInput{
-			InstanceId:   instanceId,
-			AllocationId: allocRes.AllocationId,
-		})
-		if err != nil {
-			fmt.Println("无法关联弹性IP:", err)
-			return
+		state := descInstances.Reservations[0].Instances[0].State.Name
+		if *state == "running" {
+			break
 		}
 
-		fmt.Println("弹性IP已成功关联到实例:", *instanceId)
-	} else {
-		fmt.Println("未成功创建任何实例")
+		time.Sleep(10 * time.Second)
 	}
+	fmt.Println("实例已启动,正在分配弹性IP...")
+
+	// 申请弹性IP
+	allocRes, err := svc.AllocateAddress(&ec2.AllocateAddressInput{
+		Domain: aws.String("vpc-0cadb665c480c21d1"), // VPC网络
+	})
+	if err != nil {
+		fmt.Println("无法分配弹性IP:", err)
+		return
+	}
+
+	// 关联弹性IP到实例
+	_, err = svc.AssociateAddress(&ec2.AssociateAddressInput{
+		InstanceId:   instanceId,
+		AllocationId: allocRes.AllocationId,
+	})
+	if err != nil {
+		fmt.Println("无法关联弹性IP:", err)
+		return
+	}
+
+	fmt.Println("弹性IP已成功关联到实例:", *instanceId)
+
 }
