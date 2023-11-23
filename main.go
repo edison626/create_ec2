@@ -23,7 +23,7 @@ type EC2Config struct {
 func configEC2Instances(batch string) []EC2Config {
 	return []EC2Config{
 		{
-			ImageId:         "ami-0a23face2dcb47fa6",
+			ImageId:         "ami-01da42fa32830f2d0",
 			InstanceType:    "t3.small",
 			KeyName:         "ec2-user",
 			SecurityGroupID: "sg-033a6552e3ffe1a48",
@@ -32,7 +32,7 @@ func configEC2Instances(batch string) []EC2Config {
 			VolumeSize:      100,
 		},
 		{
-			ImageId:         "ami-0a23face2dcb47fa6",
+			ImageId:         "ami-01da42fa32830f2d0",
 			InstanceType:    "t3.small",
 			KeyName:         "ec2-user",
 			SecurityGroupID: "sg-033a6552e3ffe1a48",
