@@ -23,22 +23,178 @@ type EC2Config struct {
 func configEC2Instances(batch string) []EC2Config {
 	return []EC2Config{
 		{
-			ImageId:         "ami-01da42fa32830f2d0",
-			InstanceType:    "t3.small",
-			KeyName:         "ec2-user",
-			SecurityGroupID: "sg-033a6552e3ffe1a48",
-			SubnetID:        "subnet-0a7e140afbc1f8f9b",
-			TagValue:        batch + "MyFirstInstanceTest1",
-			VolumeSize:      100,
+			ImageId:      "ami-01da42fa32830f2d0",
+			InstanceType: "t3.medium",
+			TagValue:     batch + "vn-prod-web-proxy01",
+			VolumeSize:   100,
 		},
 		{
-			ImageId:         "ami-01da42fa32830f2d0",
-			InstanceType:    "t3.small",
-			KeyName:         "ec2-user",
-			SecurityGroupID: "sg-033a6552e3ffe1a48",
-			SubnetID:        "subnet-0a7e140afbc1f8f9b",
-			TagValue:        batch + "MyFirstInstanceTest2",
-			VolumeSize:      100,
+			ImageId:      "ami-01da42fa32830f2d0",
+			InstanceType: "t3.small",
+			TagValue:     batch + "prod-web-proxy02",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-01da42fa32830f2d0",
+			InstanceType: "t3.small",
+			TagValue:     batch + "vn-prod-callback",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-01da42fa32830f2d0",
+			InstanceType: "t3.small",
+			TagValue:     batch + "vn-prod-houtai",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "vn-prod-mongodb-01",
+			VolumeSize:   500,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "vn-prod-mongodb-02",
+			VolumeSize:   500,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "vn-prod-mongodb-03",
+			VolumeSize:   500,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "t3.xlarge",
+			TagValue:     batch + "vn-prod-cgcron-clinet-task01",
+			VolumeSize:   300,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "vn-prod-cgcron-clinet-task02",
+			VolumeSize:   300,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "prod-redis-etcd01",
+			VolumeSize:   150,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "prod-redis-etcd02",
+			VolumeSize:   150,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "prod-redis-etcd03",
+			VolumeSize:   150,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.2xlarge",
+			TagValue:     batch + "starrocks-be-01",
+			VolumeSize:   300,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.2xlarge",
+			TagValue:     batch + "starrocks-be-02",
+			VolumeSize:   300,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.2xlarge",
+			TagValue:     batch + "starrocks-be-03",
+			VolumeSize:   300,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "starrocks-fe-01",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "starrocks-fe-02",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "starrocks-fe-03",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "wukong-yq-a06",
+			VolumeSize:   200,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "wukong-yq-a07",
+			VolumeSize:   200,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "wukong-yq-a08",
+			VolumeSize:   200,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.2xlarge",
+			TagValue:     batch + "yq-prod-cloudcanal-01",
+			VolumeSize:   500,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.2xlarge",
+			TagValue:     batch + "yq-prod-cloudcanal-02",
+			VolumeSize:   500,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.2xlarge",
+			TagValue:     batch + "yq-prod-cloudcanal-03",
+			VolumeSize:   500,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "yq-rocketmq-prod1",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "yq-rocketmq-prod2",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "vn-prod-zinc-beanstalkd",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "vn-prod-rmqtt01",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "vn-prod-rmqtt02",
+			VolumeSize:   100,
 		},
 	}
 }
@@ -67,13 +223,13 @@ func main() {
 		runResult, err := svc.RunInstances(&ec2.RunInstancesInput{
 			ImageId:      aws.String(config.ImageId),
 			InstanceType: aws.String(config.InstanceType),
-			KeyName:      aws.String(config.KeyName),
+			KeyName:      aws.String("ec2-user"),
 			MinCount:     aws.Int64(1),
 			MaxCount:     aws.Int64(1), // 只创建一台实例
 			SecurityGroupIds: []*string{
-				aws.String(config.SecurityGroupID),
+				aws.String("sg-033a6552e3ffe1a48"),
 			},
-			SubnetId: aws.String(config.SubnetID), // 替换为您的子网ID
+			SubnetId: aws.String("subnet-0a7e140afbc1f8f9b"), // 替换为您的子网ID
 			BlockDeviceMappings: []*ec2.BlockDeviceMapping{
 				{
 					DeviceName: aws.String("/dev/sdh"),
