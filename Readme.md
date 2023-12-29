@@ -1,0 +1,1 @@
+go build -o ec2vn main.go

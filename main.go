@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -59,7 +60,7 @@ type Asset struct {
 }
 
 // 创建一个EC2Config切片包含不同的实例配置
-func configEC2Instances(batch string) []EC2Config {
+func configEC2Instances(batch string, wukong []string) []EC2Config {
 	return []EC2Config{
 		{
 			ImageId:      "ami-01da42fa32830f2d0",
@@ -172,19 +173,25 @@ func configEC2Instances(batch string) []EC2Config {
 		{
 			ImageId:      "ami-0e8849aa060c28662",
 			InstanceType: "c5.xlarge",
-			TagValue:     batch + "wukong-yq-a06",
+			TagValue:     batch + "wukong-" + wukong[0],
 			VolumeSize:   200,
 		},
 		{
 			ImageId:      "ami-0e8849aa060c28662",
 			InstanceType: "c5.xlarge",
-			TagValue:     batch + "wukong-yq-a07",
+			TagValue:     batch + "wukong-" + wukong[1],
 			VolumeSize:   200,
 		},
 		{
 			ImageId:      "ami-0e8849aa060c28662",
 			InstanceType: "c5.xlarge",
-			TagValue:     batch + "wukong-yq-a08",
+			TagValue:     batch + "wukong-" + wukong[2],
+			VolumeSize:   200,
+		},
+		{
+			ImageId:      "ami-0e8849aa060c28662",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "wukong-" + wukong[3],
 			VolumeSize:   200,
 		},
 		{
@@ -300,13 +307,15 @@ func main() {
 	varBatch := os.Getenv("Batch")
 	varAssetNote := os.Getenv("AssetNote")
 	varAssetNodeDisplay := os.Getenv("AssetNodeDisplay")
+	varWukong := os.Getenv("WukongPlatform")
 	fmt.Printf("JmsServerURL : %s\n", varJmsServerURL)
 	fmt.Printf("JMSToken : %s\n", varJMSToken)
 	fmt.Printf("Batch : %s\n", varBatch)
 	fmt.Printf("AssetNote : %s\n", varAssetNote)
 	fmt.Printf("AssetNodeDisplay : %s\n", varAssetNodeDisplay)
+	fmt.Printf("WukongPlatform : %s\n", varWukong)
 
-	if varJmsServerURL == "" || varJMSToken == "" || varBatch == "" || varAssetNote == "" || varAssetNodeDisplay == "" {
+	if varJmsServerURL == "" || varJMSToken == "" || varBatch == "" || varAssetNote == "" || varAssetNodeDisplay == "" || varWukong == "" {
 		log.Fatalf("值不能为空")
 	}
 
@@ -322,7 +331,8 @@ func main() {
 	svc := ec2.New(sess)
 
 	//实例内容 - 函数
-	configs := configEC2Instances(varBatch)
+	arrayWukong := strings.Split(varWukong, ",")
+	configs := configEC2Instances(varBatch, arrayWukong)
 
 	// ... 创建实例的代码
 	for _, config := range configs {
