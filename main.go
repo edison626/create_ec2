@@ -62,66 +62,66 @@ type Asset struct {
 // 创建一个EC2Config切片包含不同的实例配置
 func configEC2Instances(batch string, wukong []string) []EC2Config {
 	return []EC2Config{
-		// {
-		// 	ImageId:      "ami-03c8ede7d276c3742",
-		// 	InstanceType: "t3.medium",
-		// 	TagValue:     batch + "vn-prod-web-proxy01",
-		// 	VolumeSize:   100,
-		// },
-		// {
-		// 	ImageId:      "ami-03c8ede7d276c3742",
-		// 	InstanceType: "t3.small",
-		// 	TagValue:     batch + "prod-web-proxy02",
-		// 	VolumeSize:   100,
-		// },
-		// {
-		// 	ImageId:      "ami-03c8ede7d276c3742",
-		// 	InstanceType: "t3.small",
-		// 	TagValue:     batch + "vn-prod-callback",
-		// 	VolumeSize:   100,
-		// },
-		// {
-		// 	ImageId:      "ami-03c8ede7d276c3742",
-		// 	InstanceType: "t3.small",
-		// 	TagValue:     batch + "vn-prod-houtai",
-		// 	VolumeSize:   100,
-		// },
-		// {
-		// 	ImageId:      "ami-0576432444a75fe79",
-		// 	InstanceType: "c5.xlarge",
-		// 	TagValue:     batch + "vn-prod-mongodb-01",
-		// 	VolumeSize:   500,
-		// },
-		// {
-		// 	ImageId:      "ami-0576432444a75fe79",
-		// 	InstanceType: "c5.xlarge",
-		// 	TagValue:     batch + "vn-prod-mongodb-02",
-		// 	VolumeSize:   500,
-		// },
-		// {
-		// 	ImageId:      "ami-0576432444a75fe79",
-		// 	InstanceType: "c5.xlarge",
-		// 	TagValue:     batch + "vn-prod-mongodb-03",
-		// 	VolumeSize:   500,
-		// },
-		// {
-		// 	ImageId:      "ami-0c63fb53825c3d4de",
-		// 	InstanceType: "t3.xlarge",
-		// 	TagValue:     batch + "vn-prod-cgcron-clinet-task01",
-		// 	VolumeSize:   300,
-		// },
-		// {
-		// 	ImageId:      "ami-0c63fb53825c3d4de",
-		// 	InstanceType: "t3.xlarge",
-		// 	TagValue:     batch + "vn-prod-cgcron-clinet-task02",
-		// 	VolumeSize:   300,
-		// },
-		// {
-		// 	ImageId:      "ami-076b8d9868b7a6ee7",
-		// 	InstanceType: "c5.xlarge",
-		// 	TagValue:     batch + "prod-redis-etcd01",
-		// 	VolumeSize:   150,
-		// },
+		{
+			ImageId:      "ami-03c8ede7d276c3742",
+			InstanceType: "t3.medium",
+			TagValue:     batch + "vn-prod-web-proxy01",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-03c8ede7d276c3742",
+			InstanceType: "t3.small",
+			TagValue:     batch + "prod-web-proxy02",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-03c8ede7d276c3742",
+			InstanceType: "t3.small",
+			TagValue:     batch + "vn-prod-callback",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-03c8ede7d276c3742",
+			InstanceType: "t3.small",
+			TagValue:     batch + "vn-prod-houtai",
+			VolumeSize:   100,
+		},
+		{
+			ImageId:      "ami-0576432444a75fe79",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "vn-prod-mongodb-01",
+			VolumeSize:   500,
+		},
+		{
+			ImageId:      "ami-0576432444a75fe79",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "vn-prod-mongodb-02",
+			VolumeSize:   500,
+		},
+		{
+			ImageId:      "ami-0576432444a75fe79",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "vn-prod-mongodb-03",
+			VolumeSize:   500,
+		},
+		{
+			ImageId:      "ami-0c63fb53825c3d4de",
+			InstanceType: "t3.xlarge",
+			TagValue:     batch + "vn-prod-cgcron-clinet-task01",
+			VolumeSize:   300,
+		},
+		{
+			ImageId:      "ami-0c63fb53825c3d4de",
+			InstanceType: "t3.xlarge",
+			TagValue:     batch + "vn-prod-cgcron-clinet-task02",
+			VolumeSize:   300,
+		},
+		{
+			ImageId:      "ami-076b8d9868b7a6ee7",
+			InstanceType: "c5.xlarge",
+			TagValue:     batch + "prod-redis-etcd01",
+			VolumeSize:   150,
+		},
 		{
 			ImageId:      "ami-076b8d9868b7a6ee7",
 			InstanceType: "c5.xlarge",
